@@ -1,0 +1,12 @@
+<fieldset>
+	<div class="control-group">
+		<label class="control-label">Server selection</label>
+		<div class="controls">
+			<select name="check[server]" class="span2">
+			<% servers.forEach(function(server) { %>
+			<option <%=server === check.getPollerParam('server') ? "selected='selected'" : "" %>><%= server %></option>
+			<% }) %>
+			</select>
+		</div>
+	</div>
+</fieldset>
