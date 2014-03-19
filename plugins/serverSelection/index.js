@@ -1,31 +1,20 @@
 /**
- * HTTP options plugin
+ * Server selection plugin
  *
- * Add options to a HTTP/HTTPS poller on a per-check basis
+ * Add options to select a server using a cookie (handy for HAProxy users)
  *
  * Installation
  * ------------
- * This plugin is enabled by default. To disable it, remove its entry 
- * from the `plugins` key of the configuration:
- *
- *   // in config/production.yaml
- *   plugins:
- *     # - ./plugins/httpOptions
  *
  * Usage
  * -----
- * Add the custom HTTP/HTTPS options in the 'HTTP Options' textarea displayed 
- * in the check Edit page, in YAML format. For instance:
+ * Add a section named "serverSelection" to the config, with an option 'cookieName' and a collection 'servers'. For instance:
  *
- * method: HEAD
- * headers:
- *   User-Agent: This Is Uptime Calling
- *   X-My-Custom-Header: FooBar
- *
- * See the Node documentation for a list of available options.
- *
- * When Uptime polls a HTTP or HTTPS check, the custom options override
- * the ClientRequest options.
+ * serverSelection:
+ *   cookieName: SRV
+ *   servers:
+ *     - web01
+ *     - web02
  */
 var fs   = require('fs');
 var ejs  = require('ejs');
