@@ -64,9 +64,9 @@ exports.initMonitor = function(options) {
     if (check.type !== 'http' && check.type !== 'https') return;
     var server = check.pollerParams && check.pollerParams.server;
 
-		console.log(config.cookieName, '=', server);
-   
-		poller.target.headers['Cookie'] = config.cookieName + '=' + server;
+  	if(server) { 
+			poller.target.headers['Cookie'] = config.cookieName + '=' + server;
+		}
 
     if (!options) return;
     return;
